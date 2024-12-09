@@ -50,4 +50,27 @@ $(function () {
             $('#escribirPost').text('Error');
         });
     });
+
+    // BOTON PUT
+    $('#botonPut').on('click', function() {
+        $.ajax({
+            url: 'https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes/1',
+            type: 'PUT',
+            data: { nombre: 'nombre cambiado', apellido: 'apellido cambiado' },
+            success: function(data) {
+                $('#escribirPut').text('OK');
+            }
+        });
+    });
+
+    // BOTON DELETE
+    $('#botonDelete').on('click', function() {
+        $.ajax({
+            url: 'https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes/1',
+            type: 'DELETE',
+            success: function() {
+                $('#escribirDelete').text('OK');
+            },
+        });
+    });
 });

@@ -65,7 +65,7 @@ $(function () {
         $.ajax({
             url: 'https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes/1',
             method: 'PUT',
-            data: { nombre: 'nombre cambiado', apellido: 'apellido cambiado' },
+            data: JSON.stringify({ nombre: 'nombre cambiado', apellido: 'apellido cambiado' }),
             success: function(data) {
                 $('#escribirPut').text('OK');
             },

@@ -18,10 +18,10 @@ $(function () {
     // BOTON LISTAR 
     $('#botonListar').on('click', function () {
         $.get('https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes', function (data) {
-
             $('#escribirLista').text('OK');
+            $('#escribirLista').attr('data-midato', data);
+            console.log(data);
         }).fail(function () {
-
             // Mensaje de error si falla
             $('#escribirLista').text('Error');
         });
@@ -30,24 +30,32 @@ $(function () {
     // BOTON LISTAR UNO
     $('#botonListarUno').on('click', function () {
         $.get('https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes/1', function (data) {
-
             $('#escribirUnoGet').text('OK');
+            console.log(data);
         }).fail(function () {
-
             // Mensaje de error si falla
             $('#escribirUnoGet').text('Error');
         });
     });
 
     // BOTON POST 
-    $('#botonPost').on('click', function () {
-        $.post('https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes', function (data) {
-
-            $('#escribirPost').text('OK');
-        }).fail(function () {
-
-            // Mensaje de error si falla
-            $('#escribirPost').text('Error');
+    $('#botonPost').on('click', function() {
+        $.ajax({
+            url: 'https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes',
+            method: 'POST',
+            data: {
+                // Puedes pasar id:0 o no pasar el id
+                id: 0,
+                nombre: 'Juan',
+                apellido: 'Otro mas',
+            },
+            success: function(data) {
+                $('#escribirPost').text('OK');
+            },
+            error: function(data) {
+                console.log(data);
+                $('#escribirPost').text('Error');
+             }
         });
     });
 
@@ -55,11 +63,15 @@ $(function () {
     $('#botonPut').on('click', function() {
         $.ajax({
             url: 'https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes/1',
-            type: 'PUT',
+            method: 'PUT',
             data: { nombre: 'nombre cambiado', apellido: 'apellido cambiado' },
             success: function(data) {
                 $('#escribirPut').text('OK');
-            }
+            },
+            error: function(data) {
+                console.log(data);
+                $('#escribirPut').text('Error');
+             }
         });
     });
 
@@ -67,10 +79,14 @@ $(function () {
     $('#botonDelete').on('click', function() {
         $.ajax({
             url: 'https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes/1',
-            type: 'DELETE',
-            success: function() {
+            method: 'DELETE',
+            success: function(data) {
                 $('#escribirDelete').text('OK');
             },
+            error: function(data) {
+                console.log(data);
+                $('#escribirDelete').text('Error');
+             }
         });
     });
 });

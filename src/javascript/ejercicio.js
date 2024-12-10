@@ -43,12 +43,13 @@ $(function () {
         $.ajax({
             url: 'https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes',
             method: 'POST',
-            data: {
+            // Para que el form data del payload envio un json
+            data: JSON.stringify({
                 // Puedes pasar id:0 o no pasar el id
                 id: 0,
                 nombre: 'Juan',
                 apellido: 'Otro mas',
-            },
+            }),
             success: function(data) {
                 $('#escribirPost').text('OK');
             },

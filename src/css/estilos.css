@@ -1,0 +1,23 @@
+
+button {
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid tomato;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: gold;
+}
+
+div.contenido {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagen {
+    width: 30px;
+    margin-left: 15px;
+}

@@ -21,6 +21,9 @@ $(function () {
             $('#escribirLista').text('OK');
             $('#escribirLista').attr('data-midato', data);
             console.log(data);
+    
+            $('.imagenListar').removeAttr('hidden');
+
         }).fail(function () {
             // Mensaje de error si falla
             $('#escribirLista').text('Error');
@@ -32,6 +35,7 @@ $(function () {
         $.get('https://my-json-server.typicode.com/desarrollo-seguro/dato/solicitudes/1', function (data) {
             $('#escribirUnoGet').text('OK');
             console.log(data);
+            $('.imagenListarUno').removeAttr('hidden');
         }).fail(function () {
             // Mensaje de error si falla
             $('#escribirUnoGet').text('Error');
@@ -58,6 +62,7 @@ $(function () {
                 $('#escribirPost').text('Error');
              }
         });
+        $('.imagenPost').removeAttr('hidden');
     });
 
     // BOTON PUT
@@ -74,6 +79,7 @@ $(function () {
                 $('#escribirPut').text('Error');
              }
         });
+        $('.imagenPut').removeAttr('hidden');
     });
 
     // BOTON DELETE
@@ -89,5 +95,6 @@ $(function () {
                 $('#escribirDelete').text('Error');
              }
         });
+        $('.imagenDelete').removeAttr('hidden');
     });
 });
